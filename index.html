@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOW SUN</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #000; overflow: hidden; color: #e9e4da;
+  font-family: system-ui, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; user-select: none; cursor: default; }
+#view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+.ui { position: fixed; inset: 0; pointer-events: none; }
+.ui__dot { position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; margin: -2px 0 0 -2px; border-radius: 50%; background: rgba(255,255,255,.85);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.35); transition: opacity .12s; }
+.ui__hit { position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; opacity: 0; }
+.ui__hit::before, .ui__hit::after { content: ""; position: absolute; left: 10px; top: 0; width: 2px; height: 22px; background:
+  linear-gradient(#fff 0 6px, transparent 6px 16px, #fff 16px); }
+.ui__hit::before { transform: rotate(45deg); } .ui__hit::after { transform: rotate(-45deg); }
+.ui__hit.is-kill::before, .ui__hit.is-kill::after { background: linear-gradient(#ff5a3c 0 7px, transparent 7px 15px, #ff5a3c 15px); }
+.ui__ammo { position: absolute; right: 44px; bottom: 36px; display: flex; gap: 5px; align-items: flex-end; opacity: .9; transition: opacity .4s; }
+.ui__round { width: 5px; height: 22px; border-radius: 2.5px 2.5px 1px 1px; background: #efe6d2; box-shadow: 0 0 6px rgba(0,0,0,.5); transition: opacity .15s, transform .15s; }
+.ui__round--small { width: 4px; height: 13px; }
+.ui__round.is-spent { opacity: .18; transform: translateY(3px); }
+.ui__obj { position: absolute; left: 44px; top: 38px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; opacity: 0; transition: opacity .8s;
+  text-shadow: 0 1px 8px rgba(0,0,0,.8); }
+.ui__obj b { display: block; font-weight: 600; font-size: 10px; letter-spacing: .3em; color: #e8b872; margin-bottom: 7px; }
+.ui__hint { position: absolute; left: 50%; bottom: 17%; transform: translateX(-50%); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; opacity: 0;
+  transition: opacity .6s; text-shadow: 0 1px 8px rgba(0,0,0,.9); white-space: nowrap; }
+.ui__hint kbd, .ui__prompt kbd, .menu kbd { font: inherit; display: inline-block; min-width: 1.9em; padding: 3px 7px; margin: 0 3px; border: 1px solid rgba(233,228,218,.55); border-radius: 4px; text-align: center; }
+.ui__prompt { position: absolute; left: 50%; top: 58%; transform: translateX(-50%); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; opacity: 0; transition: opacity .2s;
+  text-shadow: 0 1px 8px rgba(0,0,0,.9); white-space: nowrap; }
+.ui__mark { position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; transform: rotate(45deg); border: 1.5px solid #e8b872; opacity: 0; transition: opacity .5s; }
+.ui__mark span { position: absolute; left: 14px; top: 8px; transform: rotate(-45deg); font-size: 10px; letter-spacing: .1em; color: #e8b872; white-space: nowrap; }
+.ui__hurt { position: absolute; inset: 0; opacity: 0; background: radial-gradient(ellipse at center, transparent 45%, rgba(120,8,0,.55) 100%); }
+.ui__dir { position: absolute; left: 50%; top: 50%; width: 0; height: 0; opacity: 0; }
+.ui__dir::before { content: ""; position: absolute; left: -46px; top: -150px; width: 92px; height: 26px; border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: radial-gradient(ellipse at 50% 100%, transparent 55%, rgba(255,70,40,.85) 60%, transparent 72%); }
+.ui__warn { position: absolute; left: 50%; top: 50%; width: 0; height: 0; opacity: 0; }
+.ui__warn::before { content: ""; position: absolute; left: -34px; top: -112px; width: 68px; height: 18px; border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: radial-gradient(ellipse at 50% 100%, transparent 58%, rgba(255,196,96,.95) 63%, transparent 74%); }
+.ui__warn::after { content: ""; position: absolute; left: -4px; top: -124px; border: 4px solid transparent; border-bottom: 7px solid rgba(255,196,96,.95); }
+.ui__radio { position: absolute; left: 50%; bottom: 7.5%; transform: translateX(-50%); width: min(74ch, 78vw); text-align: center; font-size: 15px; line-height: 1.45; opacity: 0; transition: opacity .7s;
+  text-shadow: 0 1px 2px rgba(0,0,0,.95), 0 0 14px rgba(0,0,0,.8); color: #f1ece2; }
+.ui__radio b { display: block; font-weight: 600; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: #8fd0c4; margin-bottom: 5px; }
+.ui__boss { position: absolute; left: 50%; top: 40px; transform: translateX(-50%); width: min(420px, 44vw); opacity: 0; transition: opacity .8s; text-align: center; }
+.ui__boss b { display: block; font-weight: 600; font-size: 10px; letter-spacing: .34em; text-transform: uppercase; color: #ff8a6a; margin-bottom: 7px; text-shadow: 0 1px 8px rgba(0,0,0,.8); }
+.ui__boss div { position: relative; height: 5px; background: rgba(10,10,10,.55); box-shadow: 0 0 0 1px rgba(255,255,255,.16);
+  -webkit-mask-image: linear-gradient(90deg, #000 0 32.6%, transparent 32.6% 33.4%, #000 33.4% 66%, transparent 66% 66.8%, #000 66.8%); mask-image: linear-gradient(90deg, #000 0 32.6%, transparent 32.6% 33.4%, #000 33.4% 66%, transparent 66% 66.8%, #000 66.8%); }
+.ui__boss i { position: absolute; inset: 0; background: linear-gradient(90deg, #ff5a3c, #ffb070); transform-origin: 0 50%; transition: transform .25s; }
+.ui__boss.is-prime b { color: #8fd0c4; } .ui__boss.is-prime div { -webkit-mask-image: none; mask-image: none; } .ui__boss.is-prime i { background: linear-gradient(90deg, #3aa89a, #b7f0e2); transition: none; }
+.ui__prompt i { display: block; height: 3px; margin: 9px auto 0; width: 150px; background: rgba(255,255,255,.2); } .ui__prompt i u { display: block; height: 100%; background: #e8b872; transform-origin: 0 50%; }
+.ui__rec { position: absolute; right: 44px; top: 38px; display: none; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; text-shadow: 0 1px 6px rgba(0,0,0,.8); }
+.ui__rec i { display: inline-block; width: 9px; height: 9px; margin-right: 8px; border-radius: 50%; background: #ff3b2f; animation: rec 1.1s steps(2, start) infinite; } @keyframes rec { to { visibility: hidden; } }
+.ui__fade { position: absolute; inset: 0; background: #000; opacity: 1; transition: opacity 1.2s; }
+.ui__stats { position: absolute; left: 8px; bottom: 8px; font: 11px/1.35 ui-monospace, Menlo, monospace; color: #9f9; white-space: pre; display: none; text-shadow: 0 0 3px #000; }
+.menu { position: fixed; inset: 0; display: none; flex-direction: column; justify-content: flex-end; padding: 0 0 9vh 7vw; pointer-events: auto;
+  background: linear-gradient(90deg, rgba(4,6,8,.78) 0%, rgba(4,6,8,.35) 45%, transparent 75%); }
+.menu.is-open { display: flex; }
+.menu--center { justify-content: center; }
+.menu h1 { margin: 0; font-weight: 200; font-size: clamp(44px, 7vw, 104px); letter-spacing: .34em; line-height: 1; color: #f4ead8; }
+.menu h2 { margin: 0 0 4px; font-weight: 300; font-size: 30px; letter-spacing: .3em; text-transform: uppercase; }
+.menu p { margin: 14px 0 0; max-width: 34em; font-size: 14px; line-height: 1.6; color: #c9c2b4; }
+.menu__sub { margin-top: 14px; font-size: 12px; letter-spacing: .42em; text-transform: uppercase; color: #e8b872; }
+.menu__go { margin-top: 34px; font-size: 14px; letter-spacing: .3em; text-transform: uppercase; animation: menu-pulse 2.4s ease-in-out infinite; }
+@keyframes menu-pulse { 50% { opacity: .45; } }
+.menu__keys { margin-top: 26px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #a9a294; line-height: 2.5; }
+.menu__row { display: flex; align-items: center; gap: 16px; margin-top: 16px; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; width: 420px; max-width: 80vw; }
+.menu__row label { flex: 0 0 150px; color: #c9c2b4; }
+.menu__row input[type=range] { flex: 1; accent-color: #e8b872; }
+.menu__row output { flex: 0 0 34px; text-align: right; color: #e8b872; }
+.menu__seg { display: flex; flex: 1; border: 1px solid rgba(233,228,218,.4); border-radius: 4px; overflow: hidden; }
+.menu__seg button { flex: 1; padding: 7px 0; font: inherit; letter-spacing: .14em; text-transform: uppercase; color: #c9c2b4; background: none; border: 0; cursor: pointer; }
+.menu__seg button.is-on { background: #e8b872; color: #14110c; }
+.menu__btn { margin-top: 30px; align-self: flex-start; padding: 12px 30px; font: inherit; font-size: 13px; letter-spacing: .3em; text-transform: uppercase; color: #14110c; background: #e8b872;
+  border: 0; border-radius: 3px; cursor: pointer; }
+.menu__btn--ghost { margin-top: 12px; background: none; color: #c9c2b4; border: 1px solid rgba(233,228,218,.4); }
+.load { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #050607; transition: opacity .8s; }
+.load__name { font-weight: 200; font-size: 34px; letter-spacing: .5em; margin-right: -.5em; color: #f4ead8; }
+.load__bar { width: 220px; height: 1px; margin-top: 26px; background: rgba(233,228,218,.2); }
+.load__bar i { display: block; height: 100%; width: 0; background: #e8b872; transition: width .2s; }
+.load__msg { margin-top: 14px; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: #8d867a; }
+body.is-capture .ui, body.is-capture .menu, body.is-capture .load { display: none !important; }
+</style>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/addons/", "three-mesh-bvh": "./vendor/three-mesh-bvh.module.js" } }
+</script>
+</head>
+<body>
+<canvas id="view"></canvas>
+<div class="ui" id="ui">
+  <div class="ui__hurt" id="hurt"></div>
+  <div class="ui__dir" id="dir"></div>
+  <div class="ui__dot" id="dot"></div>
+  <div class="ui__hit" id="hit"></div>
+  <div class="ui__mark" id="mark"><span></span></div>
+  <div class="ui__obj" id="obj"><b>Objective</b><span></span></div>
+  <div class="ui__hint" id="hint"></div>
+  <div class="ui__prompt" id="prompt"></div>
+  <div class="ui__warn"></div><div class="ui__warn"></div><div class="ui__warn"></div>
+  <div class="ui__radio" id="radio"><b>Control</b><span></span></div>
+  <div class="ui__boss" id="boss"><b>Lifter</b><div><i></i></div></div>
+  <div class="ui__rec" id="rec"><i></i>Rec <span>0:00</span></div>
+  <div class="ui__ammo" id="ammo"></div>
+  <div class="ui__fade" id="fade"></div>
+  <div class="ui__stats" id="stats"></div>
+</div>
+<div class="menu" id="menu-title">
+  <h1>LOW SUN</h1>
+  <div class="menu__sub">Skarn Head pumping station &middot; 06:12</div>
+  <p>The station went dark in the night and its sentries have stopped answering. You have the key, the old rifle and a pistol. Get the power on, get the pumps running, and shut the machines down.</p>
+  <div class="menu__go">Click to begin</div>
+  <div class="menu__keys"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move &nbsp; <kbd>Mouse</kbd> look &nbsp; <kbd>Left click</kbd> fire &nbsp; <kbd>Right click</kbd> aim<br>
+  <kbd>R</kbd> reload &nbsp; <kbd>Shift</kbd> sprint &nbsp; <kbd>Space</kbd> jump &nbsp; <kbd>E</kbd> use &nbsp; <kbd>Q</kbd> swap weapon &nbsp; <kbd>V</kbd> record a clip &nbsp; <kbd>Esc</kbd> pause</div>
+</div>
+<div class="menu" id="menu-pause">
+  <h2>Paused</h2>
+  <div class="menu__row"><label for="set-sens">Mouse sensitivity</label><input id="set-sens" type="range" min="0.2" max="3" step="0.05"><output id="out-sens"></output></div>
+  <div class="menu__row"><label for="set-vol">Volume</label><input id="set-vol" type="range" min="0" max="1" step="0.02"><output id="out-vol"></output></div>
+  <div class="menu__row"><label>Quality</label><div class="menu__seg" id="set-quality"><button data-q="low">Low</button><button data-q="medium">Medium</button><button data-q="high">High</button></div></div>
+  <button class="menu__btn" id="btn-resume">Resume</button>
+  <button class="menu__btn menu__btn--ghost" id="btn-restart">Restart mission</button>
+</div>
+<div class="menu" id="menu-dead">
+  <h2>You went down</h2>
+  <p>A sentry always warns you before it fires: quickening beeps, a red line, and an amber arc on screen pointing at it. Step sideways behind something, or shoot first.</p>
+  <button class="menu__btn" id="btn-retry">Try again from the last checkpoint</button>
+</div>
+<div class="menu" id="menu-end">
+  <h1>LOW SUN</h1>
+  <div class="menu__sub">Mission complete</div>
+  <p>Power on, pumps running, every machine down. Skarn Head is yours again, and the sun is up.</p>
+  <p id="end-stats"></p>
+  <button class="menu__btn" id="btn-again">Play again</button>
+</div>
+<div id="fault" style="display:none;position:fixed;inset:0;z-index:50;align-items:center;justify-content:center;background:rgba(0,0,0,.82);text-align:center;font-size:15px;line-height:1.6;letter-spacing:.04em"><div><b style="display:block;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#e8b872;margin-bottom:10px">The game has stopped</b>Something went wrong and the game cannot carry on.<br>Your Mac is fine. Reload this page to start again (&#8984;R).</div></div>
+<div class="load" id="load"><div class="load__name">LOW SUN</div><div class="load__bar"><i id="load-bar"></i></div><div class="load__msg" id="load-msg">Loading</div></div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

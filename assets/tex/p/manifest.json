@@ -1,0 +1,366 @@
+{
+ "Barrel_01": {
+  "diff": "Barrel_01_explosive_diff",
+  "nor": "Barrel_01_explosive_nor",
+  "arm": "Barrel_01_explosive_arm",
+  "alpha": "OPAQUE",
+  "model": "Barrel_01"
+ },
+ "WetFloorSign_01": {
+  "diff": "WetFloorSign_01_diff",
+  "nor": "WetFloorSign_01_nor",
+  "arm": "WetFloorSign_01_arm",
+  "alpha": "OPAQUE",
+  "model": "WetFloorSign_01"
+ },
+ "barrel_03": {
+  "diff": "barrel_03_diff",
+  "nor": "barrel_03_nor",
+  "arm": "barrel_03_arm",
+  "alpha": "OPAQUE",
+  "model": "barrel_03"
+ },
+ "caged_hanging_light": {
+  "diff": "caged_hanging_light_diff",
+  "nor": "caged_hanging_light_nor",
+  "arm": "caged_hanging_light_arm",
+  "alpha": "OPAQUE",
+  "model": "caged_hanging_light"
+ },
+ "cardboard_box_01": {
+  "diff": "cardboard_box_01_diff",
+  "nor": "cardboard_box_01_nor",
+  "arm": "cardboard_box_01_arm",
+  "alpha": "OPAQUE",
+  "model": "cardboard_box_01"
+ },
+ "concrete_road_barrier": {
+  "diff": "concrete_road_barrier_diff",
+  "nor": "concrete_road_barrier_nor",
+  "arm": "concrete_road_barrier_arm",
+  "alpha": "OPAQUE",
+  "model": "concrete_road_barrier"
+ },
+ "exterior_aircon_unit_01": {
+  "diff": "exterior_aircon_unit_01_diff",
+  "nor": "exterior_aircon_unit_01_nor",
+  "arm": "exterior_aircon_unit_01_arm",
+  "alpha": "OPAQUE",
+  "model": "exterior_aircon_unit"
+ },
+ "exterior_aircon_unit_02": {
+  "diff": "exterior_aircon_unit_01_opacity",
+  "nor": "exterior_aircon_unit_02_nor",
+  "arm": "exterior_aircon_unit_02_arm",
+  "alpha": "BLEND",
+  "model": "exterior_aircon_unit"
+ },
+ "exterior_aircon_unit_rusted_01": {
+  "diff": "exterior_aircon_unit_rusted_01_diff",
+  "nor": "exterior_aircon_unit_rusted_01_nor",
+  "arm": "exterior_aircon_unit_rusted_01_arm",
+  "alpha": "OPAQUE",
+  "model": "exterior_aircon_unit"
+ },
+ "exterior_aircon_unit_rusted_02": {
+  "diff": "exterior_aircon_unit_rusted_02_opacity",
+  "nor": "exterior_aircon_unit_rusted_02_nor",
+  "arm": "exterior_aircon_unit_rusted_02_arm",
+  "alpha": "BLEND",
+  "model": "exterior_aircon_unit"
+ },
+ "fire_alarm": {
+  "diff": "fire_alarm_diff",
+  "nor": "fire_alarm_nor",
+  "arm": "fire_alarm_arm",
+  "alpha": "OPAQUE",
+  "model": "fire_alarm"
+ },
+ "hand_truck": {
+  "diff": "hand_truck_diff",
+  "nor": "hand_truck_nor",
+  "arm": "hand_truck_arm",
+  "alpha": "OPAQUE",
+  "model": "hand_truck"
+ },
+ "hanging_industrial_lamp": {
+  "diff": "hanging_industrial_lamp_diff",
+  "nor": "hanging_industrial_lamp_nor",
+  "arm": "hanging_industrial_lamp_arm",
+  "alpha": "OPAQUE",
+  "model": "hanging_industrial_lamp"
+ },
+ "hanging_industrial_lamp_glass": {
+  "diff": null,
+  "nor": "hanging_industrial_lamp_glass_nor",
+  "arm": null,
+  "alpha": "OPAQUE",
+  "model": "hanging_industrial_lamp"
+ },
+ "industrial_pastic_container": {
+  "diff": "industrial_pastic_container_diff",
+  "nor": "industrial_pastic_container_nor",
+  "arm": "industrial_pastic_container_arm",
+  "alpha": "OPAQUE",
+  "model": "industrial_pastic_container"
+ },
+ "industrial_wall_lamp": {
+  "diff": "industrial_wall_lamp_diff",
+  "nor": "industrial_wall_lamp_nor",
+  "arm": "industrial_wall_lamp_arm",
+  "alpha": "OPAQUE",
+  "model": "industrial_wall_lamp"
+ },
+ "industrial_wall_lamp_glass": {
+  "diff": "industrial_wall_lamp_glass_diff",
+  "nor": "industrial_wall_lamp_glass_nor",
+  "arm": "industrial_wall_lamp_glass_arm",
+  "alpha": "BLEND",
+  "model": "industrial_wall_lamp"
+ },
+ "korean_fire_extinguisher_01_body": {
+  "diff": "korean_fire_extinguisher_01_body_diff",
+  "nor": "korean_fire_extinguisher_01_body_nor",
+  "arm": "korean_fire_extinguisher_01_body_arm",
+  "alpha": "OPAQUE",
+  "model": "korean_fire_extinguisher_01"
+ },
+ "korean_fire_extinguisher_01_glass": {
+  "diff": "korean_fire_extinguisher_01_glass_diff",
+  "nor": "korean_fire_extinguisher_01_glass_nor",
+  "arm": "korean_fire_extinguisher_01_glass_arm",
+  "alpha": "BLEND",
+  "model": "korean_fire_extinguisher_01"
+ },
+ "korean_fire_extinguisher_01_paper": {
+  "diff": "korean_fire_extinguisher_01_paper_diff",
+  "nor": "korean_fire_extinguisher_01_paper_nor",
+  "arm": "korean_fire_extinguisher_01_paper_arm",
+  "alpha": "BLEND",
+  "model": "korean_fire_extinguisher_01"
+ },
+ "ladder_sectioned_01": {
+  "diff": "ladder_sectioned_01_diff",
+  "nor": "ladder_sectioned_01_nor",
+  "arm": "ladder_sectioned_01_arm",
+  "alpha": "OPAQUE",
+  "model": "ladder_sectioned_01"
+ },
+ "metal_jerrycan": {
+  "diff": "metal_jerrycan_diff",
+  "nor": "metal_jerrycan_nor",
+  "arm": "metal_jerrycan_arm",
+  "alpha": "OPAQUE",
+  "model": "metal_jerrycan"
+ },
+ "metal_tool_chest": {
+  "diff": "metal_tool_chest_diff",
+  "nor": "metal_tool_chest_nor",
+  "arm": "metal_tool_chest_arm",
+  "alpha": "OPAQUE",
+  "model": "metal_tool_chest"
+ },
+ "modular_industrial_pipes_01_group01": {
+  "diff": "modular_industrial_pipes_01_group01_diff",
+  "nor": "modular_industrial_pipes_01_group01_nor",
+  "arm": "modular_industrial_pipes_01_group01_arm",
+  "alpha": "OPAQUE",
+  "model": "modular_industrial_pipes_01"
+ },
+ "modular_industrial_pipes_01_group02": {
+  "diff": "modular_industrial_pipes_01_group02_diff",
+  "nor": "modular_industrial_pipes_01_group02_nor",
+  "arm": "modular_industrial_pipes_01_group02_arm",
+  "alpha": "OPAQUE",
+  "model": "modular_industrial_pipes_01"
+ },
+ "mountainside": {
+  "diff": "mountainside_diff",
+  "nor": "mountainside_nor",
+  "arm": "mountainside_arm",
+  "alpha": "OPAQUE",
+  "model": "mountainside"
+ },
+ "mounted_fluorescent_lights": {
+  "diff": "mounted_fluorescent_lights_diff",
+  "nor": "mounted_fluorescent_lights_nor",
+  "arm": "mounted_fluorescent_lights_arm",
+  "alpha": "OPAQUE",
+  "model": "mounted_fluorescent_lights"
+ },
+ "mounted_fluorescent_lights_glass": {
+  "diff": "mounted_fluorescent_lights_diff",
+  "nor": "mounted_fluorescent_lights_nor",
+  "arm": "mounted_fluorescent_lights_arm",
+  "alpha": "OPAQUE",
+  "model": "mounted_fluorescent_lights"
+ },
+ "drone_rock_01": {
+  "diff": "namaqualand_cliff_01_diff",
+  "nor": "namaqualand_cliff_01_nor",
+  "arm": "namaqualand_cliff_01_arm",
+  "alpha": "OPAQUE",
+  "model": "namaqualand_cliff_01"
+ },
+ "old_military_compressor": {
+  "diff": "old_military_compressor_diff",
+  "nor": "old_military_compressor_nor",
+  "arm": "old_military_compressor_arm",
+  "alpha": "OPAQUE",
+  "model": "old_military_compressor"
+ },
+ "old_military_compressor_glass": {
+  "diff": "old_military_compressor_diff",
+  "nor": "old_military_compressor_nor",
+  "arm": "old_military_compressor_arm",
+  "alpha": "BLEND",
+  "model": "old_military_compressor"
+ },
+ "military_crate_m_01": {
+  "diff": "old_military_crate_diff",
+  "nor": "old_military_crate_nor",
+  "arm": "old_military_crate_arm",
+  "alpha": "OPAQUE",
+  "model": "old_military_crate"
+ },
+ "overhead_crane_trim": {
+  "diff": "overhead_crane_trim_diff",
+  "nor": "overhead_crane_trim_nor",
+  "arm": "overhead_crane_trim_arm",
+  "alpha": "OPAQUE",
+  "model": "overhead_crane"
+ },
+ "overhead_crane": {
+  "diff": "overhead_crane_diff",
+  "nor": "overhead_crane_nor",
+  "arm": "overhead_crane_arm",
+  "alpha": "OPAQUE",
+  "model": "overhead_crane"
+ },
+ "plastic_crate_01": {
+  "diff": "plastic_crate_01_diff",
+  "nor": "plastic_crate_01_nor",
+  "arm": "plastic_crate_01_arm",
+  "alpha": "OPAQUE",
+  "model": "plastic_crate_01"
+ },
+ "portable_generator": {
+  "diff": "portable_generator_diff",
+  "nor": "portable_generator_nor",
+  "arm": "portable_generator_arm",
+  "alpha": "OPAQUE",
+  "model": "portable_generator"
+ },
+ "portable_generator_glass": {
+  "diff": "portable_generator_diff",
+  "nor": "portable_generator_nor",
+  "arm": "portable_generator_arm",
+  "alpha": "BLEND",
+  "model": "portable_generator"
+ },
+ "portable_welding_cart": {
+  "diff": "portable_welding_cart_diff",
+  "nor": "portable_welding_cart_nor",
+  "arm": "portable_welding_cart_arm",
+  "alpha": "OPAQUE",
+  "model": "portable_welding_cart"
+ },
+ "portable_welding_cart_glass": {
+  "diff": "portable_welding_cart_diff",
+  "nor": "portable_welding_cart_nor",
+  "arm": "portable_welding_cart_arm",
+  "alpha": "BLEND",
+  "model": "portable_welding_cart"
+ },
+ "power_box_01": {
+  "diff": "power_box_01_diff",
+  "nor": "power_box_01_nor",
+  "arm": "power_box_01_arm",
+  "alpha": "OPAQUE",
+  "model": "power_box_01"
+ },
+ "propane_tank": {
+  "diff": "propane_tank_diff",
+  "nor": "propane_tank_nor",
+  "arm": "propane_tank_arm",
+  "alpha": "OPAQUE",
+  "model": "propane_tank"
+ },
+ "rock_face_01": {
+  "diff": "rock_face_01_diff",
+  "nor": "rock_face_01_nor",
+  "arm": "rock_face_01_arm",
+  "alpha": "OPAQUE",
+  "model": "rock_face_01"
+ },
+ "rollershutter_door": {
+  "diff": "rollershutter_door_diff",
+  "nor": "rollershutter_door_nor",
+  "arm": "rollershutter_door_arm",
+  "alpha": "OPAQUE",
+  "model": "rollershutter_door"
+ },
+ "rollershutter_door_graffiti": {
+  "diff": "rollershutter_door_graffiti_diff",
+  "nor": "rollershutter_door_nor",
+  "arm": "rollershutter_door_arm",
+  "alpha": "OPAQUE",
+  "model": "rollershutter_door"
+ },
+ "security_camera_01": {
+  "diff": "security_camera_01_diff",
+  "nor": "security_camera_01_nor",
+  "arm": "security_camera_01_arm",
+  "alpha": "OPAQUE",
+  "model": "security_camera_01"
+ },
+ "security_camera_01_glass": {
+  "diff": "security_camera_01_diff",
+  "nor": "security_camera_01_nor",
+  "arm": "security_camera_01_arm",
+  "alpha": "BLEND",
+  "model": "security_camera_01"
+ },
+ "steel_frame_shelves_01": {
+  "diff": "steel_frame_shelves_01_diff",
+  "nor": "steel_frame_shelves_01_nor",
+  "arm": "steel_frame_shelves_01_arm",
+  "alpha": "OPAQUE",
+  "model": "steel_frame_shelves_01"
+ },
+ "tool_cart": {
+  "diff": "tool_cart_diff",
+  "nor": "tool_cart_nor",
+  "arm": "tool_cart_arm",
+  "alpha": "OPAQUE",
+  "model": "tool_cart"
+ },
+ "utility_box_01": {
+  "diff": "utility_box_01_diff",
+  "nor": "utility_box_01_nor",
+  "arm": "utility_box_01_arm",
+  "alpha": "OPAQUE",
+  "model": "utility_box_01"
+ },
+ "utility_box_02": {
+  "diff": "utility_box_02_diff",
+  "nor": "utility_box_02_nor",
+  "arm": "utility_box_02_arm",
+  "alpha": "OPAQUE",
+  "model": "utility_box_02"
+ },
+ "water_manhole_cover": {
+  "diff": "water_manhole_cover_diff",
+  "nor": "water_manhole_cover_nor",
+  "arm": "water_manhole_cover_arm",
+  "alpha": "OPAQUE",
+  "model": "water_manhole_cover"
+ },
+ "wooden_crate_02": {
+  "diff": "wooden_crate_02_diff",
+  "nor": "wooden_crate_02_nor",
+  "arm": "wooden_crate_02_arm",
+  "alpha": "OPAQUE",
+  "model": "wooden_crate_02"
+ }
+}
